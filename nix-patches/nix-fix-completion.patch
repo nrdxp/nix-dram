@@ -1,0 +1,13 @@
+diff --git a/src/libutil/args.cc b/src/libutil/args.cc
+index afed0670f..0abd0c21d 100644
+--- a/src/libutil/args.cc
++++ b/src/libutil/args.cc
+@@ -62,7 +62,7 @@ void Args::parseCmdline(const Strings & _cmdline)
+ 
+     if (auto s = getEnv("NIX_GET_COMPLETIONS")) {
+         size_t n = std::stoi(*s);
+-        assert(n > 0 && n <= cmdline.size());
++        assert(n >= 0 && n <= cmdline.size());
+         *std::next(cmdline.begin(), n - 1) += completionMarker;
+         completions = std::make_shared<decltype(completions)::element_type>();
+         verbosity = lvlError;
